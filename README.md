@@ -16,9 +16,9 @@ Just important things to remember from the official typescript handbook
 * [Variable declarations](#variable-declarations)
   * [`let` declarations](#let-declarations)
     * [Block scoping](#block-scoping)
-	* [Cannot used blocked scoped variables before declared](#cannot-used-blocked-scoped-variables-before-declared)
+	* [Cannot use blocked scoped variables before declared](#cannot-use-blocked-scoped-variables-before-declared)
   * [`const` declarations](#const-declarations)
-    *[`const` is not _inmutable_](#const-is-not-inmutable)
+    * [`const` is not _inmutable_](#const-is-not-inmutable)
 	
 
 # Basic types
