@@ -4,13 +4,22 @@ Just important things to remember from the official typescript handbook
   * [Boolean](#boolean)
   * [Number](#number)
   * [String](#string)
+    * [Template strings](#template-strings)
   * [Array](#array)
   * [Tuple](#tuple)
+    * [Union types](#union-types)
   * [Enum](#enum)
   * [Any](#any)
   * [Void](#void)
   * [Never](#never)
   * [Type assertions](#type-assertions)
+* [Variable declarations](#variable-declarations)
+  * [`let` declarations](#let-declarations)
+    * [Block scoping](#block-scoping)
+	* [Cannot used blocked scoped variables before declared](#cannot-used-blocked-scoped-variables-before-declared)
+  * [`const` declarations](#const-declarations)
+    *[`const` is not _inmutable_](#const-is-not-inmutable)
+	
 
 # Basic types
 
@@ -36,6 +45,7 @@ let color: string = "blue";
 color = 'red';
 ```
 
+### Template strings
 You can also use template strings.
 ```typescript
 let fullName: string = `Bob Bobbington`;
@@ -68,6 +78,7 @@ x = ["hello", 10]; // OK
 x = [10, "hello"];
 ```
 
+### Union types
 When accesing  an element outside the know indices, a union type is used instead:
 
 ```typescript
@@ -148,29 +159,52 @@ let strLength: number = (someValue as string).length;
 
 # Variable declarations
 
+## `let` declarations 
+### Block scoping
+`let` statements are declarations with block-scoping.
 
+```typescript
+function f(input: boolean) {
+    let a = 100;
+	
+	if (input) {
+	    // Still okay to reference 'a'
+		let b = a + 1;
+		return b;
+	}
+	
+	// Error: 'b' doesn't exist here
+}
+```
 
+### Cannot use blocked scoped variables before declared
 
+```typescript
+a++; // illegal to use 'a' before it's declared;
+let a;
+```
 
+## `const` declarations
+`const` cariables value cannot be changed once they are bound.
 
+### `const` is not _inmutable_
+```typescript
+const numLivesForCat = 9;
+const kitty = {
+    name: "Aurora",
+	numLives: numLivesForCat
+};
 
+// Error 
+kitty = {
+    name: "Danielle",
+	numLives: numLivesForCat
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// all "okay"
+kitty.name = "Rory";
+kitty.name = "Kitty";
+kitty.name = "Cat";
+kitty.numLives--;
+```
 
