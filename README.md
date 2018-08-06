@@ -2,6 +2,18 @@
 
 Just important things to remember from the official typescript handbook
 
+* [Basic types](#basic-types)
+  * [Boolean](#boolean)
+  * [Number](#number)
+  * [String](#string)
+  * [Array](#array)
+  * [Tuple](#tuple)
+  * [Enum](#enum)
+  * [Any](#any)
+  * [Void](#void)
+  * [Never](#never)
+  * [Type assertions](#type-assertions)
+
 ## Basic types
 
 
