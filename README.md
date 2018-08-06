@@ -1,5 +1,3 @@
-# Typescript cheatsheet 
-
 Just important things to remember from the official typescript handbook
 
 * [Basic types](#basic-types)
@@ -14,17 +12,17 @@ Just important things to remember from the official typescript handbook
   * [Never](#never)
   * [Type assertions](#type-assertions)
 
-## Basic types
+# Basic types
 
 
-### Boolean
+## Boolean
 
 ```typescript
 let isDone: boolean = false;
 ```
 
 
-### Number
+## Number
 ```typescript
 let decimal: number = 6;
 let hex: number = 0xf00d;
@@ -32,7 +30,7 @@ let binary: number = 0b1010;
 let octal: number = 0o744;
 ```
 
-### String
+## String
 ```typescript
 let color: string = "blue";
 color = 'red';
@@ -47,7 +45,7 @@ let sentence: string = `Hello, my name is ${ fullname }.
 I'll be ${ age+1 } years old next month.`;
 ```
 
-### Array
+## Array
 ```typescript
 let list: number[] = [1, 2, 3];
 ```
@@ -58,7 +56,7 @@ Or
 let list: Array<number> = [1, 2, 3];
 ```
 
-### Tuple
+## Tuple
 Used when the type of a fixed number of elements is know, but doesn't have to be the same.
 
 ```typescript
@@ -80,13 +78,13 @@ console.log(x[5].toString()); // Ok, 'string' and 'number' both have 'toString'
 x[6] = true; // Error, 'boolean'
 ```
 
-### Enum
+## Enum
 ```typescript
 enum Color {Red, Green, Blue}
 let c: Color = Color.Green;
 ```
 
-### Any
+## Any
 Used for opting-out of type-checking and let the values pass through compile-time checks.
 ```typescript
 let notSure: any = 4;
@@ -102,7 +100,7 @@ let list: any[] = [1, true, "free"];
 list[1] = 100;
 ```
 
-### Void
+## Void
 Used as return type of functions that do not return a value.
 ```typescript
 function warnUser(): void {
@@ -110,7 +108,7 @@ function warnUser(): void {
 }
 ```
 
-### Never
+## Never
 `never` is the return type for a function expression or an arrow function expression that always throws an exception or one that never returns.
 
 ```typescript
@@ -147,6 +145,9 @@ let someValue: any = "this is a string";
 
 let strLength: number = (someValue as string).length;
 ```
+
+# Variable declarations
+
 
 
 
