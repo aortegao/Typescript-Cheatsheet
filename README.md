@@ -19,7 +19,13 @@ Just important things to remember from the official typescript handbook
 	* [Cannot use blocked scoped variables before declared](#cannot-use-blocked-scoped-variables-before-declared)
   * [`const` declarations](#const-declarations)
     * [`const` is not _inmutable_](#const-is-not-inmutable)
-	
+  * [Destructuring](#destructuring)
+    * [Array destructuring](#array-destructuring)
+	* [Object destructuring](#object-destructuring)
+	  * [Property renaiming](#property-renaiming)
+  * [Spread]($spread)
+    * [Array spread](#array spread)
+	* [Object spread](#object spread)
 
 # Basic types
 
@@ -207,4 +213,107 @@ kitty.name = "Kitty";
 kitty.name = "Cat";
 kitty.numLives--;
 ```
+
+## Destructuring
+
+### Array destructuring
+The simplest form of destructuring is array destructuring assignment:
+```typescript
+let input = [1, 2];
+let [first, second] = input;
+console.log(first); // outputs 1
+console.log(second); // outputs 2
+```
+
+Is the same as:
+```typescript
+first = input[0];
+second = input[1];
+```
+
+Destructuring works with already-declared variables:
+```typescript
+// swap variables
+[first, second] = [second, first];
+```
+
+And with parameters to a function:
+```typescript
+function f([first, second]: [number, number]) {
+    console.log(first);
+	console.log(second);
+}
+f([1, 2]);
+```
+
+You can create a variable for the remaining items in a list using the syntax `...`:
+```typescript
+let [first, ...rest] = [1, 2, 3, 4];
+console.log(first); // outputs 1
+console.log(rest); // outputs [ 2, 3, 4];
+```
+
+Of course, since this is Javascript, you can just ignore trailing elements you don't care about:
+```typescript
+let [first] = [1, 2, 3, 4]
+console.log(first) // outputs 1
+```
+
+Or other elements:
+```typescript
+let [, second, , fourth] = [1, 2, 3, 4];
+```
+
+### Object destructuring 
+You can also destructure objects:
+```typescript
+let o = {
+    a: "foo",
+	b: 12,
+	c: "bar"
+};
+
+let { a, b } = o;
+```
+
+You can create a variable for the remaining items in an object using the syntax `...`:
+```typescript
+let { a, ...passthrough } = o;
+let total = passthrough.b + passthrough.c.length;
+```
+
+#### Property renaming
+You can also give different names to properties:
+```typescript
+let { a: newName1, b: newName2 } = o;
+```
+
+Is equal to:
+```typescript
+let newName1 = o.a;
+let newName2 = o.b;
+```
+
+## Spread
+It allows you to spread an array into another array, or an object into another object. 
+
+### Array spread
+```typescript
+let first = [1, 2];
+let second = [3, 4];
+let bothPlus = [0, ...first, ...second, 5];
+```
+ This gives `bothPlus` the value `[0, 1, 2, 3, 4, 5]`. Spreading creates a shallow copy of `first` and `second`. **They are not changed by the spread**
+ 
+### Object spread
+```typescript
+let defaults = { food: "spicy", price: "$$", ambiance: "noisy"}
+let search = { ...defaults, food: "rich"};
+```
+
+Now `search` is `{ food: "rich", price: "$$", ambiance:"noicy"}`. In object spreading **properties that come later in the spread object overwrite properties that 
+come earlier**.
+
+
+
 
